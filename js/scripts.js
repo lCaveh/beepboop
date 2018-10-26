@@ -1,35 +1,46 @@
 $(document).ready(function() {
   $("#formOne").submit(function(event) {
     event.preventDefault();
+    //back-end logic begin
     var name = $("#name").val();
     var number = $("#number").val();
     var track = $("#track").val();
-    var beepArray = []
+    var beepArray = [];
+    //create array
     for (var i=0;i<=number;i++){
       beepArray[i]= i.toString();
+      //check the most important condition
       if (i>0 && i%3==0) {
-        beepArray[i] = "I'm sorry, "+name+". I'm afraid I can't do that."
+        beepArray[i] = "I'm sorry, "+name+". I'm afraid I can't do that.";
       };
+      //check second condition
       if (beepArray[i].match(/1/)) {
-        beepArray[i] = "Boop!"
+        beepArray[i] = "Boop!";
       };
+      //check lost condition
       if (beepArray[i].match(/0/)) {
-        beepArray[i] = "Beep!"
+        beepArray[i] = "Beep!";
       };
     };
+    //reverse the array if backward was choosed
     if (track==1) {
       beepArray = beepArray.reverse();
     };
+    //back-end logic finish
+    //front-end begin
     $(".container").hide();
     $(".show").show();
-
-  counter=0
-  setTimeout(anim(beepArray),1000);
-    console.log(beepArray)
+    //define a counter to count elements of array
+    counter=0;
+    //put a callback function with the intervall to run animation every 1 sec
+    setTimeout(anim(beepArray),1000);
   });
 });
+//callback function to call itself after running animation
 function anim(beepArray){
+  //fade element in 0.5 sec
   $('#element').animate({ opacity: 0 }, 500,function(){
+    //four condition to change background color depend on the type of elements
     if (beepArray[counter]==="Beep!"){
       $(document.body).removeClass();
       $(document.body).addClass("beep");
@@ -40,19 +51,23 @@ function anim(beepArray){
       $(document.body).removeClass();
       $(document.body).addClass("num");
     } else {
-      console.log("no")
       $(document.body).removeClass();
       $(document.body).addClass("dont");
     }
-    $('#element').text(beepArray[counter])
+    //show elementss in a row
+    $('#element').text(beepArray[counter]);
+    //show element in .1 sec
     $('#element').animate({ opacity: 1 }, 100,function(){
+      //go to next element
       counter++;
+      //return if the last element was shown
       if(counter > beepArray.length-1){
         return
       };
+      //fade element in 0.4 sec again and callback the function after animation was shown
       $('#element').animate({ opacity: 0}, 400,function(){
         setTimeout(anim(beepArray),1000);
       });
     });
   });
-}
+};
