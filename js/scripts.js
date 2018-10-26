@@ -3,37 +3,43 @@ $(document).ready(function() {
     event.preventDefault();
     //back-end logic begin
     var name = $("#name").val();
-    var number = $("#number").val();
+    var number = Math.abs($("#number").val());
     var track = $("#track").val();
-    var beepArray = [];
-    //create array
-    for (var i=0;i<=number;i++){
-      beepArray[i]= i.toString();
-      //check the most important condition
-      if (i>0 && i%3==0) {
-        beepArray[i] = "I'm sorry, "+name+". I'm afraid I can't do that.";
+    //check the name to be a real name
+    if (name.match(/^[a-zA-Z]+$/)){
+
+      var beepArray = [];
+      //create array
+      for (var i=0;i<=number;i++){
+        beepArray[i]= i.toString();
+        //check the most important condition
+        if (i>0 && i%3==0) {
+          beepArray[i] = "I'm sorry, "+name+". I'm afraid I can't do that.";
+        };
+        //check second condition
+        if (beepArray[i].match(/1/)) {
+          beepArray[i] = "Boop!";
+        };
+        //check lost condition
+        if (beepArray[i].match(/0/)) {
+          beepArray[i] = "Beep!";
+        };
       };
-      //check second condition
-      if (beepArray[i].match(/1/)) {
-        beepArray[i] = "Boop!";
+      //reverse the array if backward was choosed
+      if (track==1) {
+        beepArray = beepArray.reverse();
       };
-      //check lost condition
-      if (beepArray[i].match(/0/)) {
-        beepArray[i] = "Beep!";
-      };
+      //back-end logic finish
+      //front-end begin
+      $(".container").hide();
+      $(".show").show();
+      //define a counter to count elements of array
+      counter=0;
+      //put a callback function with the intervall to run animation every 1 sec
+      setTimeout(anim(beepArray),1000);
+    } else {
+      alert("Enter a real name");
     };
-    //reverse the array if backward was choosed
-    if (track==1) {
-      beepArray = beepArray.reverse();
-    };
-    //back-end logic finish
-    //front-end begin
-    $(".container").hide();
-    $(".show").show();
-    //define a counter to count elements of array
-    counter=0;
-    //put a callback function with the intervall to run animation every 1 sec
-    setTimeout(anim(beepArray),1000);
   });
 });
 //callback function to call itself after running animation
