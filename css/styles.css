@@ -1,17 +1,13 @@
 body {
   background-color: lightblue;
 }
-
-#story p {
-  color: red;
-}
 .show {
   position: fixed;
   font-family: fantasy;
   top: 40%;
   text-align: center;
   width: 100%;
-  font-size: 8vw;
+  font-size: 10vw;
   opacity: 1;
   display: none;
 }
@@ -21,15 +17,23 @@ body {
 .animation {
   -webkit-animation : bigFade 1s ease-in 1 forwards;
 }
-@keyframes bigFade {
-  100% {
-    transform: scale(4.0);
-    opacity : 0;
-  }
+.beep {
+  background: url("../img/beep.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
-@-webkit-keyframes bigFade {
-  100% {
-    -webkit-transform: scale(4.0);
-    opacity : 0;
-  }
+.boop {
+  background: url("../img/boop.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.dont {
+  background: url("../img/dont.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.num {
+  background: url("../img/num.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
 }

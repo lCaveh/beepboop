@@ -30,6 +30,20 @@ $(document).ready(function() {
 });
 function anim(beepArray){
   $('#element').animate({ opacity: 0 }, 500,function(){
+    if (beepArray[counter]==="Beep!"){
+      $(document.body).removeClass();
+      $(document.body).addClass("beep");
+    } else if (beepArray[counter]==="Boop!"){
+      $(document.body).removeClass();
+      $(document.body).addClass("boop");
+    } else if (beepArray[counter].match(/[1-9]/)){
+      $(document.body).removeClass();
+      $(document.body).addClass("num");
+    } else {
+      console.log("no")
+      $(document.body).removeClass();
+      $(document.body).addClass("dont");
+    }
     $('#element').text(beepArray[counter])
     $('#element').animate({ opacity: 1 }, 100,function(){
       counter++;
