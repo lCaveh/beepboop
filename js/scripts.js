@@ -3,18 +3,42 @@ $(document).ready(function() {
     event.preventDefault();
     var name = $("#name").val();
     var number = $("#number").val();
-    var BeepArray = []
+    var track = $("#track").val();
+    var beepArray = []
     for (var i=0;i<=number;i++){
-      BeepArray[i]= i.toString();
+      beepArray[i]= i.toString();
       if (i>0 && i%3==0) {
-        BeepArray[i] = "I'm sorry, "+name+". I'm afraid I can't do that."
+        beepArray[i] = "I'm sorry, "+name+". I'm afraid I can't do that."
       };
-      if (BeepArray[i].match(/1/)) {
-        BeepArray[i] = "Boop!"
+      if (beepArray[i].match(/1/)) {
+        beepArray[i] = "Boop!"
       };
-      if (BeepArray[i].match(/0/)) {
-        BeepArray[i] = "Beep!"
+      if (beepArray[i].match(/0/)) {
+        beepArray[i] = "Beep!"
       };
     };
+    if (track==1) {
+      beepArray = beepArray.reverse();
+    };
+    $(".container").hide();
+    $(".show").show();
+
+  counter=0
+  setTimeout(anim(beepArray),1000);
+    console.log(beepArray)
   });
 });
+function anim(beepArray){
+  $('#element').animate({ opacity: 0 }, 500,function(){
+    $('#element').text(beepArray[counter])
+    $('#element').animate({ opacity: 1 }, 100,function(){
+      counter++;
+      if(counter > beepArray.length-1){
+        return
+      };
+      $('#element').animate({ opacity: 0}, 400,function(){
+        setTimeout(anim(beepArray),1000);
+      });
+    });
+  });
+}

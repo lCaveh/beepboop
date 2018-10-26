@@ -1,6 +1,35 @@
-#story {
-  display:none;
+body {
+  background-color: lightblue;
 }
+
 #story p {
   color: red;
+}
+.show {
+  position: fixed;
+  font-family: fantasy;
+  top: 40%;
+  text-align: center;
+  width: 100%;
+  font-size: 8vw;
+  opacity: 1;
+  display: none;
+}
+#element {
+  color: red;
+}
+.animation {
+  -webkit-animation : bigFade 1s ease-in 1 forwards;
+}
+@keyframes bigFade {
+  100% {
+    transform: scale(4.0);
+    opacity : 0;
+  }
+}
+@-webkit-keyframes bigFade {
+  100% {
+    -webkit-transform: scale(4.0);
+    opacity : 0;
+  }
 }

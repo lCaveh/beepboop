@@ -20,13 +20,19 @@
             <label for="number">Input a number to counting to:</label>
             <input id="number" class="form-control" type="number">
           </div>
+          <div class="form-group">
+            <label for="track">You like to see Beep Boop forward or backward?</label>
+            <select class="form-control" id="track">
+              <option value=0>Forward</option>
+              <option value=1>Backward</option>
+            </select>
+          </div>
           <button type="submit" class="btn btn-success">Show me!</button>
         </form>
       </div>
-
-      <div id="story">
-        <h1>Here is the result :</h1>
-      </div>
+    </div>
+    <div class="show">
+      <p id="element"></p>
     </div>
   </body>
 </html>
