@@ -33,7 +33,7 @@ _Contact Kaveh Saleminejad - lcaveh@gmail.com._
 
 ## GitHub page's links
 
-[My project's link](https://lcaveh.github.io/portfolio/)
+[My project's link](https://lcaveh.github.io/beepboop/)
 
 ## Technologies Used
 
